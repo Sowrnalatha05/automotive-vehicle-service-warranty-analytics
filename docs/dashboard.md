@@ -1,66 +1,57 @@
-# Automotive Vehicle Service & Warranty Analytics Dashboard
+# Databricks AI/BI Dashboard
 
 ## Dashboard Overview
 
-The Automotive Vehicle Service & Warranty Analytics dashboard provides an interactive view of vehicle servicing, warranty claims, service costs, dealer performance, technician performance, and service-center activity.
+The Automotive Vehicle Service & Warranty Analytics dashboard provides an interactive view of vehicle service operations, warranty claims, service costs, dealer performance, technician performance, and service center performance.
 
-The dashboard is built using **Databricks AI/BI Dashboards** and uses business-ready datasets from the **Gold Layer** of the Medallion Architecture.
+The dashboard is built using Databricks AI/BI Dashboards and uses business-ready Gold layer tables created through the Medallion Architecture.
 
 ## Key Performance Indicators
 
-The dashboard contains the following KPI cards:
-
-- **Total Vehicles Serviced** – Total number of vehicles handled through the service process.
-- **Total Service Orders** – Total number of service orders processed.
-- **Warranty Claims** – Total number of warranty claims submitted.
-- **Total Service Cost** – Total labor and parts-related service cost.
+- Total Vehicles Serviced: 10K
+- Total Service Orders: 10K
+- Warranty Claims: 3.5K
+- Total Service Cost: 2.48B
 
 ## Dashboard Visualizations
 
-### 1. Service Orders by Vehicle Make
-Shows the number of service orders associated with each vehicle manufacturer.
+The dashboard contains visualizations for:
 
-**Purpose:** Identify vehicle makes with higher service activity.
+- Service Orders by Vehicle Make
+- Warranty Claims by Status
+- Dealer Performance by Service Orders
+- Technician Performance
+- Service Center Performance
+- Service Cost Analysis
+- Vehicle Service Analysis
 
-### 2. Warranty Claims by Status
-Displays warranty claims grouped by their current status.
+## Data Source
 
-**Purpose:** Understand approved, rejected, and pending warranty claims.
+The dashboard uses the following Gold layer tables:
 
-### 3. Dealer Performance by Service Orders
-Shows service-order volume across different dealers.
+1. `automotive_project.gold.vehicle_service_analysis`
+2. `automotive_project.gold.warranty_analysis`
+3. `automotive_project.gold.dealer_performance`
+4. `automotive_project.gold.service_cost_analysis`
+5. `automotive_project.gold.technician_performance`
+6. `automotive_project.gold.service_center_performance`
 
-**Purpose:** Compare dealer activity and identify high-performing service locations.
-
-### 4. Technician Performance by Service Orders
-Displays service-order workload handled by technicians.
-
-**Purpose:** Compare technician workloads and identify variations in service activity.
-
-### 5. Service Center by Vehicle Make
-Shows service activity by vehicle manufacturer across service centers.
-
-**Purpose:** Understand the distribution of vehicle servicing across service locations.
-
-### 6. Top 10 Service Centers by Service Orders
-Displays the service centers with the highest number of service orders.
-
-**Purpose:** Identify the busiest service centers and support operational planning.
-
-## Data Architecture
-
-The dashboard follows the Medallion Architecture:
+## Architecture
 
 ```text
 15 CSV Source Files
-        ↓
+        |
+        v
 Bronze Layer
 15 Delta Tables
-        ↓
+        |
+        v
 Silver Layer
 15 Cleaned & Transformed Delta Tables
-        ↓
+        |
+        v
 Gold Layer
 6 Business-Ready Analytics Tables
-        ↓
+        |
+        v
 Databricks AI/BI Dashboard
